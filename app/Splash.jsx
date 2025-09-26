@@ -1,6 +1,7 @@
 import React from "react";
 import { Text, Image, View, StyleSheet, Pressable } from "react-native";
 import Button from "@/components/Button";
+import { colors } from "@/utils/colors";
 
 export default function Splash() {
   return (
@@ -35,7 +36,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "column",
     justifyContent: "center",
-    backgroundColor: "#fff",
+    backgroundColor: colors.white,
     /* margin: "auto", */
     width: "100%",
     height: "100%",
@@ -55,7 +56,7 @@ const styles = StyleSheet.create({
     fontSize: 40,
     fontWeight: "bold",
     textAlign: "center",
-    color: "#303030",
+    color: colors.black,
   },
   innerTitle: {
     fontFamily: "DM Sans",
@@ -63,7 +64,7 @@ const styles = StyleSheet.create({
     textDecorationLine: "underline",
     fontWeight: "bold",
     textAlign: "center",
-    color: "#fca34d",
+    color: colors.orange,
   },
   footerText: {
     fontFamily: "Montserrat",
@@ -71,7 +72,7 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
     paddingHorizontal: 8,
     textAlign: "center",
-    color: "#4f63ac",
-    
+    color: colors.blue,
+
   },
 });
