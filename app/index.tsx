@@ -3,7 +3,7 @@ import Splash from "@/app/Splash";
 
 export default function Index() {
   return (
-    <View
+    <View   
       style={{
         flex: 1,
         justifyContent: "center",

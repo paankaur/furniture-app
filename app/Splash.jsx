@@ -2,8 +2,10 @@ import React from "react";
 import { Text, Image, View, StyleSheet, Pressable } from "react-native";
 import Button from "@/components/Button";
 import { colors } from "@/utils/colors";
+import { useRouter } from "expo-router";
 
 export default function Splash() {
+  const router = useRouter();
   return (
     <View style={styles.container}>
       <Image
@@ -21,9 +23,10 @@ export default function Splash() {
         title="Sign Up"
         onPress={() => {
           console.log("Sign Up Pressed");
+          router.push("/SignUp");
         }}
       />
-      <Pressable  onPress={() => console.log("Sign In Pressed")}>
+      <Pressable onPress={() => console.log("Sign In Pressed")}>
         <Text style={styles.footerText}>Sign In</Text>
       </Pressable>
     </View>
@@ -41,8 +44,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     padding: 24,
-    borderWidth: 1,
-    
+    borderWidth: 0,
   },
   titleContainer: {
     marginVertical: 54,
@@ -73,6 +75,5 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     textAlign: "center",
     color: colors.blue,
-
   },
 });
