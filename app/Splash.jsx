@@ -26,7 +26,10 @@ export default function Splash() {
           router.push("/SignUp");
         }}
       />
-      <Pressable onPress={() => console.log("Sign In Pressed")}>
+      <Pressable onPress={() => {
+          console.log("Sign In Pressed");
+          router.push("/SignIn");
+        }}>
         <Text style={styles.footerText}>Sign In</Text>
       </Pressable>
     </View>

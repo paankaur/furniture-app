@@ -15,7 +15,7 @@ export default function SignIn() {
       <AuthHeader title="Sign In" onPress={() => navigation.goBack()} />
       <Input label={"E-mail"} placeholder={"john.doe@example.com"} />
       <Input isPassword={true} label={"Password"} placeholder={"**********"} />
-        <Button title="Sign In" onPress={() => console.log("Sign In Pressed")} />
+        <Button title="Sign In" onPress={() => router.push("/Home/Home")} />
         <Separator text="Or sign in with" />
         <TouchableOpacity activeOpacity={0.7}>
             <View style={styles.googleBtn}>
