@@ -21,17 +21,31 @@ export default function Home() {
   const router = useRouter();
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedProducts, setSelectedProducts] = useState(products);
+  const [keyWord, setKeyWord] = useState("");
 
   useEffect(() => {
-    if (selectedCategory) {
+    if (selectedCategory && !keyWord) {
       const updatedSelectedProducts = products.filter(
         (product) => product.category === selectedCategory
       );
       setSelectedProducts(updatedSelectedProducts);
-    } else {
+    } else if (!selectedCategory && keyWord) {
+      const updatedSelectedProducts = products.filter((product) =>
+        product.title.toLowerCase().includes(keyWord.toLowerCase())
+      );
+      setSelectedProducts(updatedSelectedProducts);
+    } else if (selectedCategory && keyWord) {
+      const updatedSelectedProducts = products.filter(
+        (product) =>
+          product.category === selectedCategory &&
+          product.title.toLowerCase().includes(keyWord.toLowerCase())
+      );
+      setSelectedProducts(updatedSelectedProducts);
+    } else if (!selectedCategory && !keyWord) {
       setSelectedProducts(products);
     }
-  }, [selectedCategory]);
+  
+  }, [selectedCategory, keyWord]);
   // category FlatList render item
   const renderCatList = ({ item }) => {
     const isSelected = selectedCategory === item?.id;
@@ -44,16 +58,22 @@ export default function Home() {
         isSelected={selectedCategory === item?.id}
         style={styles.iconTitle}
       >
-        <View style={[styles.icon,
-          isSelected ? { borderWidth: 3 } : {borderWidth: 0}
-        ]}>
+        <View
+          style={[
+            styles.icon,
+            isSelected ? { borderWidth: 3 } : { borderWidth: 0 },
+          ]}
+        >
           <MaterialIcons name={item.icon} size={24} color={colors.blue} />
         </View>
         <Text
-        style={[{ color: isSelected ? colors.blue : colors.textGray },
-          isSelected ? { fontWeight: '600' } : { fontWeight: '400' }
-        ]}
-        >{item.title}</Text>
+          style={[
+            { color: isSelected ? colors.blue : colors.textGray },
+            isSelected ? { fontWeight: "600" } : { fontWeight: "400" },
+          ]}
+        >
+          {item.title}
+        </Text>
       </Pressable>
     );
   };
@@ -75,12 +95,15 @@ export default function Home() {
     );
   };
 
-  
-
   return (
     <View style={styles.outerContainer}>
       <View style={styles.container}>
-        <Header title="Find All You Need" showSearch={true} />
+        <Header
+          title="Find All You Need"
+          showSearch={true}
+          onSearchKeyword={setKeyWord}
+          keyWord={keyWord}
+        />
         <View style={styles.iconContainer}>
           <FlatList
             horizontal

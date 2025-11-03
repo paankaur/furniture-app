@@ -1,8 +1,9 @@
-import { Pressable, StyleSheet, Text, View } from "react-native";
-import React, { useState } from "react";
 import { colors } from "@/utils/colors";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Octicons from "@expo/vector-icons/Octicons";
+import { useRouter } from "expo-router";
+import React, { useState } from "react";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import Input from "./Input";
 
 export default function Header({
@@ -12,11 +13,14 @@ export default function Header({
   onBackPress,
   showLogout,
   onLogout,
+  onSearchKeyword,
+  keyWord,
 }) {
   const [showSearchInput, setShowSearchInput] = useState(false);
-  const onSearch = () => {
+  /* const onSearch = () => {
     setShowSearchInput(!showSearchInput);
-  }
+  }; */
+  const router = useRouter();
   return (
     <View>
       <View style={styles.container}>
@@ -29,7 +33,7 @@ export default function Header({
             <MaterialIcons name="arrow-back" size={18} color={colors.blue} />
           </Pressable>
         ) : showSearch ? (
-          <Pressable style={styles.searchIcon} hitSlop={20} onPress={onSearch}>
+          <Pressable style={styles.searchIcon} hitSlop={20} onPress={() => setShowSearchInput(!showSearchInput)}>
             <Octicons name="search" size={30} color={colors.blue} />
           </Pressable>
         ) : null}
@@ -42,7 +46,7 @@ export default function Header({
           <View style={styles.space} />
         )}
       </View>
-      {showSearchInput ? <Input placeholder="Search..." /> : null}
+      {showSearchInput ? <Input onChangeText={onSearchKeyword} value={keyWord} placeholder="Search..." /> : null}
     </View>
   );
 }

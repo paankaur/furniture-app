@@ -4,7 +4,7 @@ import { colors } from "@/utils/colors";
 import { useState } from "react";
 import Feather from "@expo/vector-icons/Feather";
 
-export default function Input({ label, placeholder, isPassword }) {
+export default function Input({ label, placeholder, isPassword, value, onChangeText }) {
   const [isPWVisible, setIsPWVisible] = useState(false);
   const onEyePress = () => {
     setIsPWVisible(!isPWVisible);
@@ -19,6 +19,8 @@ export default function Input({ label, placeholder, isPassword }) {
           style={styles.input}
           placeholder={placeholder}
           placeholderTextColor={"#c5c5c5"}
+          value={value}
+          onChangeText={onChangeText}
         />
         {isPassword ? (
           <Pressable onPress={onEyePress}>

@@ -1,12 +1,12 @@
-import React from "react";
-import { Text, View, StyleSheet, Pressable, TouchableOpacity } from "react-native";
-import { colors } from "@/utils/colors";
-import { useRouter } from "expo-router";
 import AuthHeader from "@/components/AuthHeader";
-import Input from "@/components/Input";
 import Button from "@/components/Button";
+import Input from "@/components/Input";
 import Separator from "@/components/Separator";
+import { colors } from "@/utils/colors";
 import Fontisto from '@expo/vector-icons/Fontisto';
+import { useRouter } from "expo-router";
+import React from "react";
+import { Pressable, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export default function SignIn() {
     const router = useRouter();
@@ -27,8 +27,8 @@ export default function SignIn() {
           console.log("Sign Up Pressed");
           router.push("/SignUp");
         }}>
-          <Text style={styles.footerText}>Already have an account?
-            <Text style={{ fontWeight: "bold" }}> Sign In</Text>
+          <Text style={styles.footerText}>Don't have an account?
+            <Text style={{ fontWeight: "bold" }}> Sign Up</Text>
           </Text>
         </Pressable>
     </View>
