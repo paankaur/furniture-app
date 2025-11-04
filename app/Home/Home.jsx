@@ -4,7 +4,6 @@ import Header from "@/components/Header";
 import TabMenu from "@/components/TabMenu";
 import { colors } from "@/utils/colors";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
-import { useRouter } from "expo-router";
 import React, { useEffect, useState } from "react";
 import {
   Dimensions,
@@ -18,7 +17,6 @@ import {
 const { width } = Dimensions.get("window");
 
 export default function Home() {
-  const router = useRouter();
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedProducts, setSelectedProducts] = useState(products);
   const [keyWord, setKeyWord] = useState("");
@@ -44,7 +42,6 @@ export default function Home() {
     } else if (!selectedCategory && !keyWord) {
       setSelectedProducts(products);
     }
-  
   }, [selectedCategory, keyWord]);
   // category FlatList render item
   const renderCatList = ({ item }) => {
