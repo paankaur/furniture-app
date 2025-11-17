@@ -1,9 +1,9 @@
 import React from "react";
-import { Text, StyleSheet, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
-export default function Button({ title, onPress }) {
+export default function Button({ title, onPress, style }) {
   return (
-    <TouchableOpacity activeOpacity={0.7} style={styles.button} onPress={onPress}>
+    <TouchableOpacity activeOpacity={0.7} style={[styles.button, style]} onPress={onPress}>
       <Text style={styles.buttonText}>{title}</Text>
     </TouchableOpacity>
   );
@@ -26,5 +26,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: 'Montserrat',
     fontWeight: 'bold',
+    textAlign: 'center',
   },
 });

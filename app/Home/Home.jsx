@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import TabMenu from "@/components/TabMenu";
 import { colors } from "@/utils/colors";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { useRouter } from "expo-router";
 import React, { useEffect, useState } from "react";
 import {
   Dimensions,
@@ -14,9 +15,12 @@ import {
   Text,
   View,
 } from "react-native";
+
 const { width } = Dimensions.get("window");
 
 export default function Home() {
+  const router = useRouter();
+
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedProducts, setSelectedProducts] = useState(products);
   const [keyWord, setKeyWord] = useState("");
@@ -78,7 +82,9 @@ export default function Home() {
   const renderProductList = ({ item, isSelected }) => {
     return (
       <Pressable
-        onPress={() => console.log(item.title)}
+        onPress={() => {
+          router.push(`/ProductDetails/${item.id}`)}
+        }
         style={styles.productsContainer}
       >
         <Image

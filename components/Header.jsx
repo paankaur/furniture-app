@@ -1,4 +1,5 @@
 import { colors } from "@/utils/colors";
+import Ionicons from '@expo/vector-icons/Ionicons';
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Octicons from "@expo/vector-icons/Octicons";
 import { useRouter } from "expo-router";
@@ -15,6 +16,7 @@ export default function Header({
   onLogout,
   onSearchKeyword,
   keyWord,
+  style,
 }) {
   const [showSearchInput, setShowSearchInput] = useState(false);
   /* const onSearch = () => {
@@ -23,20 +25,20 @@ export default function Header({
   const router = useRouter();
   return (
     <View>
-      <View style={styles.container}>
+      <View style={[  styles.container, style ]}>
         {showBack ? (
           <Pressable
             hitSlop={{ top: 10, bottom: 10, left: 30, right: 10 }}
             style={styles.button}
             onPress={onBackPress ? onBackPress : () => router.back()}
           >
-            <MaterialIcons name="arrow-back" size={18} color={colors.blue} />
+            <Ionicons name="chevron-back-sharp" size={34} color={colors.blue} backgroundColor={"rgba(255, 255, 255, 0.5)"} borderRadius={4} paddingHorizontal={8} paddingVertical={2} />
           </Pressable>
         ) : showSearch ? (
           <Pressable style={styles.searchIcon} hitSlop={20} onPress={() => setShowSearchInput(!showSearchInput)}>
             <Octicons name="search" size={30} color={colors.blue} />
           </Pressable>
-        ) : null}
+        ) : <View style={styles.space} />}
         <Text style={styles.title}>{title}</Text>
         {showLogout ? (
           <Pressable style={styles.logoutButton} onPress={onLogout}>
@@ -58,7 +60,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     width: "100%",
     padding: 16,
-    backgroundColor: colors.white,
+  //  backgroundColor: colors.white,
     borderBottomColor: colors.lightGray,
   },
   title: {

@@ -1,3 +1,4 @@
+import products from "@/app/data/Products";
 import Header from "@/components/Header";
 import TabMenu from "@/components/TabMenu";
 import { colors } from "@/utils/colors";
@@ -11,7 +12,6 @@ import {
   Text,
   View,
 } from "react-native";
-import products from "../data/Products";
 
 export default function Favorites() {
   const [favorites, setFavorites] = useState(products);
@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
     height: "100%",
     justifyContent: "space-between",
     backgroundColor: colors.white,
+    
   },
   container: {
     flex: 1,
@@ -77,6 +78,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#fff",
+    padding: 24,
   },
 
   subtitle: {

@@ -1,12 +1,8 @@
-import React from "react";
-import { View, Text, StyleSheet, Pressable } from "react-native";
 import { colors } from "@/utils/colors";
-import Home from "@/app/Home/Home";
-import Favorites from "@/app/Favorites/Favorites";
-import Profile from "@/app/Profile/Profile";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { useRouter } from "expo-router";
+import React from "react";
+import { Pressable, StyleSheet, View } from "react-native";
 
 export default function TabMenu({ atHome, atFavorites, atProfile }) {
   const router = useRouter();
@@ -28,8 +24,8 @@ export default function TabMenu({ atHome, atFavorites, atProfile }) {
         hitSlop={{ top: 60 }}
         onPress={() => router.push("/Favorites/Favorites")}
       >
-        <MaterialIcons
-          name={atFavorites ? "favorite" : "favorite-border"}
+        <Ionicons
+          name={atFavorites ? "bookmarks" : "bookmarks-outline"}
           size={50}
           color={colors.blue}
         />

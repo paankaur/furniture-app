@@ -22,12 +22,12 @@ export default function Splash() {
       <Button
         title="Sign Up"
         onPress={() => {
-          console.log("Sign Up Pressed");
+          
           router.push("/SignUp");
         }}
       />
       <Pressable onPress={() => {
-          console.log("Sign In Pressed");
+          
           router.push("/SignIn");
         }}>
         <Text style={styles.footerText}>Sign In</Text>
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     backgroundColor: colors.white,
-    /* margin: "auto", */
+    
     width: "100%",
     height: "100%",
     padding: 24,
