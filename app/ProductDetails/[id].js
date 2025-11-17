@@ -1,3 +1,4 @@
+import { useFavorites } from "@/app/context/FavoritesContext";
 import products from "@/app/data/Products";
 import Button from "@/components/Button";
 import Header from "@/components/Header";
@@ -6,7 +7,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { useLocalSearchParams } from "expo-router";
 import React from "react";
 import { Dimensions, Image, Linking, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
-
+ 
 
 const { width } = Dimensions.get("window");
 const { height } = Dimensions.get("window");
@@ -15,6 +16,8 @@ export default function ProductDetails() {
   const params = useLocalSearchParams();
   const { id } = params;
   const product = products.find(p => p.id.toString() === id);
+
+  const { toggleFavorite, isFavorite } = useFavorites();
 
   if (!product) {
     return (
@@ -45,8 +48,13 @@ export default function ProductDetails() {
         <Text style={styles.description}>{product.description}</Text>
       </ScrollView>
       <View style={styles.footer}>
-        <Pressable style={styles.bookmark}>
-          <Ionicons name="bookmark" size={24} color={colors.blue} />
+        <Pressable onPress={() => toggleFavorite(product.id)} style={styles.bookmark}>
+          <Ionicons
+            // show filled vs outline based on favorite state
+            name={isFavorite(product.id) ? "bookmark" : "bookmark-outline"}
+            size={24}
+            color={isFavorite(product.id) ? colors.blue : "#666"}
+          />
         </Pressable>
         <Button style={{marginTop:0, flex:1, height:60}} title="Contact Seller" onPress={contactSeller} />
       </View>

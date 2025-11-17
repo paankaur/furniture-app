@@ -12,9 +12,11 @@ import {
   Text,
   View,
 } from "react-native";
+import { useFavorites } from "@/app/context/FavoritesContext";
 
 export default function Favorites() {
-  const [favorites, setFavorites] = useState(products);
+  const { favoritesIds, removeFavorite } = useFavorites();
+  const favoritesProducts = products.filter((product) => favoritesIds.includes(product.id));
   const renderFavoriteItem = ({ item }) => {
     return (
       <Pressable style={styles.favoriteItem}>
@@ -27,13 +29,13 @@ export default function Favorites() {
           <Text style={styles.favoriteTitle}>{item.title}</Text>
           <Text style={styles.favoritePrice}>{item.price}</Text>
         </View>
-        <View style={styles.removeIcon}>
+        <Pressable style={styles.removeIcon} onPress={() => removeFavorite(item.id)}>
           <MaterialCommunityIcons
             name="truck-remove-outline"
             color={colors.blue}
             size={24}
           />
-        </View>
+        </Pressable>
       </Pressable>
     );
   };
@@ -45,9 +47,10 @@ export default function Favorites() {
         <FlatList
           showsVerticalScrollIndicator={false}
           numColumns={1}
-          data={favorites}
+          data={favoritesProducts}
           renderItem={renderFavoriteItem}
           keyExtractor={(item) => item.id.toString()}
+          ListEmptyComponent={<Text style={{ padding: 20, color: "#666" }}>No favorites yet</Text>}
           ListFooterComponent={<View style={{ height: 80 }} />}
         />
         <Text style={styles.subtitle}>
