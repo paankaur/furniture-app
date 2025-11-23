@@ -1,9 +1,10 @@
+import { useFavorites } from "@/app/context/FavoritesContext";
 import products from "@/app/data/Products";
 import Header from "@/components/Header";
 import TabMenu from "@/components/TabMenu";
 import { colors } from "@/utils/colors";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
-import React, { useState } from "react";
+import React from "react";
 import {
   FlatList,
   Image,
@@ -12,11 +13,12 @@ import {
   Text,
   View,
 } from "react-native";
-import { useFavorites } from "@/app/context/FavoritesContext";
 
 export default function Favorites() {
   const { favoritesIds, removeFavorite } = useFavorites();
-  const favoritesProducts = products.filter((product) => favoritesIds.includes(product.id));
+  const favoritesProducts = products.filter((product) =>
+    favoritesIds.includes(product.id)
+  );
   const renderFavoriteItem = ({ item }) => {
     return (
       <Pressable style={styles.favoriteItem}>
@@ -29,7 +31,10 @@ export default function Favorites() {
           <Text style={styles.favoriteTitle}>{item.title}</Text>
           <Text style={styles.favoritePrice}>{item.price}</Text>
         </View>
-        <Pressable style={styles.removeIcon} onPress={() => removeFavorite(item.id)}>
+        <Pressable
+          style={styles.removeIcon}
+          onPress={() => removeFavorite(item.id)}
+        >
           <MaterialCommunityIcons
             name="truck-remove-outline"
             color={colors.blue}
@@ -50,7 +55,9 @@ export default function Favorites() {
           data={favoritesProducts}
           renderItem={renderFavoriteItem}
           keyExtractor={(item) => item.id.toString()}
-          ListEmptyComponent={<Text style={{ padding: 20, color: "#666" }}>No favorites yet</Text>}
+          ListEmptyComponent={
+            <Text style={{ padding: 20, color: "#666" }}>No favorites yet</Text>
+          }
           ListFooterComponent={<View style={{ height: 80 }} />}
         />
         <Text style={styles.subtitle}>
@@ -70,7 +77,6 @@ const styles = StyleSheet.create({
     height: "100%",
     justifyContent: "space-between",
     backgroundColor: colors.white,
-    
   },
   container: {
     flex: 1,

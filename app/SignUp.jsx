@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import { Text, View, StyleSheet, Pressable, TouchableOpacity } from "react-native";
-import Button from "@/components/Button";
-import { colors } from "@/utils/colors";
 import AuthHeader from "@/components/AuthHeader";
+import Button from "@/components/Button";
 import Input from "@/components/Input";
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import Separator from "@/components/Separator";
+import { colors } from "@/utils/colors";
 import Fontisto from '@expo/vector-icons/Fontisto';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { useRouter } from "expo-router";
+import React, { useState } from "react";
+import { Pressable, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export default function SignUp() {
     const [checked, setChecked] = useState(false);
@@ -28,7 +28,7 @@ export default function SignUp() {
         </Text>
       </View>
 
-        <Button title="Sign Up" onPress={() => console.log("Sign Up Pressed")} />
+        <Button title="Sign Up" onPress={() => { console.log("Sign Up Pressed"); router.push("/SignIn"); }} />
         <Separator text="Or sign up with" />
         <TouchableOpacity activeOpacity={0.7}>
             <View style={styles.googleBtn}>

@@ -81,13 +81,7 @@ const styles = StyleSheet.create({
     padding: 25,
     width: "100%",
    //height: height * 0.7,
-   shadowTopColor: "red",
-   shadowOffset: {
-     width: 12,
-      height: -2,
-    },
-    shadowOpacity: 0.9,
-    shadowRadius: 4,
+   boxShadow: "12px -2px 4px rgba(131, 126, 126, 0.1)",
     elevation: 5,
   },
   image: {

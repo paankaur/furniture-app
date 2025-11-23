@@ -13,7 +13,7 @@ export default function SignIn() {
   return (
     <View style={styles.container}>
       <AuthHeader title="Sign In" onPress={() => navigation.goBack()} />
-      <Input label={"E-mail"} placeholder={"john.doe@example.com"} />
+      <Input label={"E-mail"} placeholder={"john@doe"} />
       <Input isPassword={true} label={"Password"} placeholder={"**********"} />
         <Button title="Sign In" onPress={() => router.push("/Home/Home")} />
         <Separator text="Or sign in with" />

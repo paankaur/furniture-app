@@ -42,7 +42,7 @@ export default function Header({
         <Text style={styles.title}>{title}</Text>
         {showLogout ? (
           <Pressable style={styles.logoutButton} onPress={onLogout}>
-            <MaterialIcons name="logout" size={18} color={colors.blue} />
+            <MaterialIcons name="logout" size={24 } color={colors.blue} />
           </Pressable>
         ) : (
           <View style={styles.space} />
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     width: "100%",
     padding: 16,
   //  backgroundColor: colors.white,
-    borderBottomColor: colors.lightGray,
+    borderBottomColor: colors.lightgray,
   },
   title: {
     fontSize: 20,

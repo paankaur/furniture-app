@@ -11,7 +11,7 @@ export default function TabMenu({ atHome, atFavorites, atProfile }) {
     <View style={styles.container}>
       <Pressable
         hitSlop={{ top: 60 }}
-        onPress={() => router.push("/Home/Home")}
+        onPress={() => {!atHome && router.push("/Home/Home")}}
       >
         <Ionicons
           name={atHome ? "home" : "home-outline"}
@@ -22,7 +22,7 @@ export default function TabMenu({ atHome, atFavorites, atProfile }) {
 
       <Pressable
         hitSlop={{ top: 60 }}
-        onPress={() => router.push("/Favorites/Favorites")}
+        onPress={() => {!atFavorites && router.push("/Favorites/Favorites")}}
       >
         <Ionicons
           name={atFavorites ? "bookmarks" : "bookmarks-outline"}
@@ -33,7 +33,7 @@ export default function TabMenu({ atHome, atFavorites, atProfile }) {
 
       <Pressable
         hitSlop={{ top: 60 }}
-        onPress={() => router.push("/Profile/Profile")}
+        onPress={() => {!atProfile && router.push("/Profile/Profile")}}
       >
         <Ionicons
           name={atProfile ? "person" : "person-outline"}
@@ -58,13 +58,7 @@ const styles = StyleSheet.create({
     height: 100,
     width: "100%",
     backgroundColor: colors.white,
-    shadowColor: "#837e7eff",
-    shadowOffset: {
-      width: 0,
-      height: -2,
-    },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
+    boxShadow: "0px -2px 4px rgba(131, 126, 126, 0.1)",
     elevation: 5,
   },
   tabItem: {
